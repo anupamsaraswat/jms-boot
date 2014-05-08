@@ -8,7 +8,7 @@ public class Message {
 		this.messageHeader = messageHeader;
 	}
 	public Message(){
-		
+	
 	}
 
 	public String getMessageHeader() {

@@ -4,6 +4,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
 import org.springMQTest.model.Message;
+import org.springMQTest.model.User;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
@@ -19,6 +20,12 @@ public class activemqSpringInitializer implements WebApplicationInitializer {
 		
 		Message message = (Message)ctx.getBean(Message.class);
 		System.out.println(message.getMessageHeader());
+		
+		
+		User user = (User)ctx.getBean("userBean");
+		user.setUserName("Anuapm");
+		
+		System.out.println("Hey" + user.getUserName() + "welcome Back......");
 		
 		//servletContext.addListener(new ContextLoaderListener());
 	}
