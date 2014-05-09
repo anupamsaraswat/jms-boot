@@ -3,6 +3,7 @@ package activemqWeb;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
+import org.springMQTest.business.MessageProducer;
 import org.springMQTest.model.Message;
 import org.springMQTest.model.User;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -26,6 +27,14 @@ public class activemqSpringInitializer implements WebApplicationInitializer {
 		user.setUserName("Anuapm");
 		
 		System.out.println("Hey" + user.getUserName() + "welcome Back......");
+		
+		
+		MessageProducer messageProducer=(MessageProducer)ctx.getBean("messageProducer");
+		try{
+		messageProducer.produce();
+		}catch(Exception e){
+			
+		}
 		
 		//servletContext.addListener(new ContextLoaderListener());
 	}
