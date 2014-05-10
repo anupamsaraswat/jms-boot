@@ -3,6 +3,7 @@ package activemqWeb;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
+import org.springMQTest.business.MessageConsumer;
 import org.springMQTest.business.MessageProducer;
 import org.springMQTest.model.Message;
 import org.springMQTest.model.User;
@@ -30,8 +31,12 @@ public class activemqSpringInitializer implements WebApplicationInitializer {
 		
 		
 		MessageProducer messageProducer=(MessageProducer)ctx.getBean("messageProducer");
+		MessageConsumer messageConsumer = (MessageConsumer)ctx.getBean("consumer");
 		try{
-		messageProducer.produce();
+			messageProducer.produce();
+			messageConsumer.consumeMessage();
+			messageProducer.produce();
+			messageConsumer.consumeMessage();
 		}catch(Exception e){
 			
 		}

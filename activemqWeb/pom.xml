@@ -10,6 +10,7 @@
 	<slf4j.version>1.5.10</slf4j.version>
 	<logback.version>0.9.15</logback.version>
 	<junit.version>4.7.0</junit.version>
+	<hawtio-version>1.4.0</hawtio-version>
   </properties>
   
   
@@ -58,6 +59,12 @@
 		    <artifactId>slf4j-log4j12</artifactId>
 		    <version>1.6.6</version>
 		</dependency>
+		<dependency>
+		  <groupId>io.hawt</groupId>
+		  <artifactId>hawtio-embedded</artifactId>
+		  <version>${hawtio-version}</version>
+		 </dependency>		
+		
   </dependencies>
   
   

@@ -25,11 +25,12 @@ public class JMSConfig {
 	@Bean
 	public XBeanBrokerService jmsBroker(){
 		XBeanBrokerService brokerService = new XBeanBrokerService();
-		brokerService.setPersistent(false);
-		brokerService.setUseJmx(false);
+		brokerService.setPersistent(true);
+		brokerService.setUseJmx(true);
 		try{
 			TransportConnector connector = new TransportConnector();
 			connector.setUri(new URI("tcp://localhost:9191"));
+			brokerService.addConnector(connector);
 		}catch(Exception e){
 			
 		}
@@ -46,7 +47,9 @@ public class JMSConfig {
 	@Bean
 	public ActiveMQConnectionFactory jmsConnectionFactory(){
 		ActiveMQConnectionFactory activeMQConnectionFactory= new ActiveMQConnectionFactory();
-		activeMQConnectionFactory.setBrokerURL("vm://localhost");		 
+		activeMQConnectionFactory.setBrokerURL("vm://localhost");// options to create and connect to broker using vm protocol ?broker.persistent=true&broker.useJmx=true");	
+		activeMQConnectionFactory.setUserName("anupam");
+		activeMQConnectionFactory.setPassword("anupam");
 		return activeMQConnectionFactory;
 	}
 	

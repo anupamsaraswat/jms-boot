@@ -6,17 +6,20 @@ import javax.jms.Message;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 
+import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Component("messageProducer")
 public class MessageProducer {
 	
 	@Autowired
 	public JmsTemplate jmsTemplate;
+	
+	@Autowired
+	public ActiveMQQueue jmsQueue;
 	
 	public MessageProducer(){
 		System.out.println("messageProducer created");
@@ -37,7 +40,7 @@ public class MessageProducer {
 		               }
 		            }
 		         };
-		         jmsTemplate.send(mc);
+		         jmsTemplate.send(jmsQueue,mc);
 		      }
 		   }
 
